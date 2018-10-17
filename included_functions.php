@@ -50,26 +50,26 @@ function db_connection(){
 		exit;
 	}
 
-	// function new_header($name="Default", $urlLink="") {
-	// 	echo "<head>";
-	// 	echo "	<title>$name</title>";
-	// 	echo "	<link rel='stylesheet' href='css/normalize.css'>";
-	// 	echo "	<link rel='stylesheet' href='css/foundation.css'>";
-  //
-	// 	echo "	<script src='js/vendor/modernizr.js'></script>";
-	// 	echo "</head>";
-	// 	echo "<body>";
-	// 	echo "<div class='contain-to-grid sticky'>";
-	// 	echo "<nav class='top-bar' data-topbar data-options='sticky_on: large'>";
-	// 	echo "<ul class='title-area'>";
-	// 	echo "<li class='name'>";
-	// 	echo "  <h1 align='left'><a href='/~ptfreel/".$urlLink."'>$name</a></h1>";
-	// 	echo "</li>";
-	// 	echo "</ul>";
-	// 	echo "</nav>";
-	// 	echo "</div>";
-	// 	echo "<body>";
-	// }
+	function new_header($name="Default", $urlLink="") {
+		echo "<head>";
+		echo "	<title>$name</title>";
+		echo "	<link rel='stylesheet' href='css/normalize.css'>";
+		echo "	<link rel='stylesheet' href='css/foundation.css'>";
+
+		echo "	<script src='js/vendor/modernizr.js'></script>";
+		echo "</head>";
+		echo "<body>";
+		echo "<div class='contain-to-grid sticky'>";
+		echo "<nav class='top-bar' data-topbar data-options='sticky_on: large'>";
+		echo "<ul class='title-area'>";
+		echo "<li class='name'>";
+		echo "  <h1 align='left'><a href='/~ptfreel/".$urlLink."'>$name</a></h1>";
+		echo "</li>";
+		echo "</ul>";
+		echo "</nav>";
+		echo "</div>";
+		echo "<body>";
+	}
 
 	function new_footer($name="Default", $mysqli){
 		echo "<br /><br /><br />";

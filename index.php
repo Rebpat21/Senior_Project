@@ -1,5 +1,9 @@
-<?php require_one("session.php");
-  verify_login();
+<?php
+require_once("./included_functions.php");
+require_one("session.php");
+verify_login();
+
+new_header();
 ?>
 
 <!DOCTYPE html>
