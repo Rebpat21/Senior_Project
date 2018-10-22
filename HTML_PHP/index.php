@@ -1,5 +1,5 @@
 <?php
-require_once("./included_functions.php");
+// require_once("./included_functions.php");
 require_one("session.php");
 verify_login();
 
@@ -14,7 +14,7 @@ new_header();
     <title>You-Vote</title>
   </head>
   <body>
-
+    
   </body>
 </html>
 
