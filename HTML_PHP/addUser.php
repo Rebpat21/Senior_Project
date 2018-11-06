@@ -14,10 +14,12 @@ require_once("session.php");
 	}
 
 	if (isset($_POST["submit"])) {
+		// checks to make sure that the email and password text boxes are not empty and assigns the email and password to the corresponding variables.
 		if (isset(isset(($_POST["email"] $$ $_POST["email"] !== "") && (($_POST["password"]) && $_POST["password"] !== "")) {
 			$email = $_POST["email"];
+			// assignes password to variable and encrypts.
 			$password = password_encrypt($_POST["password"]);
-//Check to make sure user does not already exist
+			//Checks to make sure user email does not already exist.
 			$query = "SELECT * FROM ";
 			$query .= "YV_Users WHERE ";
 			$query .= "email = '".$email."' ";
@@ -29,11 +31,11 @@ require_once("session.php");
 			$_SESSION["message"] = "The user already exists";
 			redirect_to("addUser.php");
 		}
-//User does not already exist so add to admins table
+//User does not already exist so add to YV_User table
 		else {
 			$query = "INSERT INTO YV_Users ";
 			$query .= "(LName, FName, hashed_password, Email, GradYear, idSchool, idPermission) ";
-			$query .= "VALUES ('LName', 'FName', '".$password."', '".$email."' 'GradYear', idSchool, idPermission)";
+			$query .= "VALUES ('LName', 'FName', '".$password."', '".$email."' 'GradYear', idPermission)";
 			$result = $mysqli->query($query);
 			if ($result) {
 				$_SESSION["message"] = "User successfully added";
@@ -55,7 +57,11 @@ require_once("session.php");
 		<h3>Add an administrator to You-Vote</h3>
 
 	<form action="addUser.php" method="post">
+		<p>First Name: <input type="text" name="FName" /> </p>
+		<p>LName: <input type="text" name="LName" value="" /> </p>
 		<p>Last Name: <input type="text" name="LName" /> </p>
+		<p>Password: <input type="password" name="password" value="" /> </p>
+		<p>Email: <input type="text" name="Email" /> </p>
 		<p>Password: <input type="password" name="password" value="" /> </p>
 		<input type="submit" name="submit" class="button tiny round" value="Add Administrator" />
 	</form>
