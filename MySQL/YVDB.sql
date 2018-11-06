@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS YV_Polls ;
 DROP TABLE IF EXISTS YV_Groups ;
 DROP TABLE IF EXISTS YV_Users ;
-DROP TABLE IF EXISTS YV_Schools ;
 DROP TABLE IF EXISTS YV_Permissions ;
 
 
@@ -15,32 +14,19 @@ INSERT INTO YV_Permissions VALUES (1, "Administrator");
 INSERT INTO YV_Permissions VALUES (2, "Teacher");
 INSERT INTO YV_Permissions VALUES (3, "Student");
 
-CREATE TABLE IF NOT EXISTS YV_Schools (
-  idSchool INT NOT NULL,
-  SchoolName VARCHAR(250) NOT NULL,
-  PRIMARY KEY (idSchool))
-ENGINE = InnoDB;
-
-INSERT INTO YV_Schools VALUES (1, "St. Benedict at Auburndale");
-
 CREATE TABLE IF NOT EXISTS YV_Users (
   idUsers INT NOT NULL AUTO_INCREMENT,
   FName VARCHAR(75) NOT NULL,
   LName VARCHAR(75) NOT NULL,
   Password VARCHAR(100) NOT NULL,
   Email VARCHAR(150) NOT NULL,
-  GradYear VARCHAR(2) NOT NULL,
-  idSchool INT NOT NULL,
+  GradYear VARCHAR(2) NULL,
   idPermission INT NOT NULL,
   PRIMARY KEY (idUsers),
     FOREIGN KEY (idPermission)
     REFERENCES YV_Permissions (idPermissions)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (idSchool)
-    REFERENCES YV_Schools (idSchool)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION
 ENGINE = InnoDB;
 
 
