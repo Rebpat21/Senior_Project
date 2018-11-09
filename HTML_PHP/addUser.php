@@ -56,6 +56,7 @@ require_once("session.php");
 
 		<h3>Add an administrator to You-Vote</h3>
 
+<!-- information boxes for new administrator user -->
 	<form action="addUser.php" method="post">
 		<p>First Name: <input type="text" name="FName" /> </p>
 		<p>LName: <input type="text" name="LName" value="" /> </p>
@@ -63,6 +64,7 @@ require_once("session.php");
 		<p>Password: <input type="password" name="password" value="" /> </p>
 		<p>Email: <input type="text" name="Email" /> </p>
 		<p>Password: <input type="password" name="password" value="" /> </p>
+		<p>Permission Level: <input type="text" name="idPermission" value="" /> </p>
 		<input type="submit" name="submit" class="button tiny round" value="Add Administrator" />
 	</form>
 
@@ -95,4 +97,4 @@ require_once("session.php");
 	</div>
 	</label>
 
-<?php  new_footer("Who's Who", $mysqli); ?>
+<?php  new_footer("You-Vote", $mysqli); ?>
