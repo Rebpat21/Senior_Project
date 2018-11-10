@@ -1,18 +1,13 @@
-DROP TABLE IF EXISTS YV_Polls ;
+DROP TABLE IF EXISTS YV_Polls, YV_Users, YV_Permissions ;
 -- DROP TABLE IF EXISTS YV_Groups ;
-DROP TABLE IF EXISTS YV_Users ;
-DROP TABLE IF EXISTS YV_Permissions ;
 
 
 CREATE TABLE IF NOT EXISTS YV_Permissions (
   idPermissions INT NOT NULL,
   PermissionName VARCHAR(45) NOT NULL,
-  PRIMARY KEY (idPermissions))
-ENGINE = InnoDB;
+  PRIMARY KEY (idPermissions)
+)ENGINE = InnoDB;
 
-INSERT INTO YV_Permissions VALUES (1, "Administrator");
-INSERT INTO YV_Permissions VALUES (2, "Teacher");
-INSERT INTO YV_Permissions VALUES (3, "Student");
 
 CREATE TABLE IF NOT EXISTS YV_Users (
   idUsers INT NOT NULL AUTO_INCREMENT,
@@ -27,9 +22,8 @@ CREATE TABLE IF NOT EXISTS YV_Users (
     REFERENCES YV_Permissions (idPermissions)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-ENGINE = InnoDB;
+)ENGINE = InnoDB;
 
-INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "Freel", "Password", "freelpatrick@hotmail.com", NULL, 1)
 
 CREATE TABLE IF NOT EXISTS YV_Polls (
   idPolls INT NOT NULL AUTO_INCREMENT,
@@ -42,7 +36,8 @@ CREATE TABLE IF NOT EXISTS YV_Polls (
     REFERENCES YV_Users (idUsers)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-ENGINE = InnoDB;
+)ENGINE = InnoDB;
+
 
 -- FOREIGN KEY (idGroup)
 -- REFERENCES YV_Groups (idGroup)
@@ -185,3 +180,10 @@ ENGINE = InnoDB;
 --     ON DELETE NO ACTION
 --     ON UPDATE NO ACTION)
 -- ENGINE = InnoDB;
+
+
+INSERT INTO YV_Permissions VALUES (1, "Administrator");
+INSERT INTO YV_Permissions VALUES (2, "Teacher");
+INSERT INTO YV_Permissions VALUES (3, "Student");
+
+INSERT INTO YV_Users (FName, LName, Password, Email, idPermission) VALUES ("Patrick", "Freel", "Password", "freelpatrick@hotmail.com", 1)
