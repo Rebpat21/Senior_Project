@@ -34,7 +34,7 @@ require_once("session.php");
 //User does not already exist so add to YV_User table
 		else {
 			$query = "INSERT INTO YV_Users ";
-			$query .= "(LName, FName, hashed_password, Email, GradYear, idSchool, idPermission) ";
+			$query .= "(LName, FName, password, Email, GradYear, idSchool, idPermission) ";
 			$query .= "VALUES ('LName', 'FName', '".$password."', '".$email."' 'GradYear', idPermission)";
 			$result = $mysqli->query($query);
 			if ($result) {

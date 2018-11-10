@@ -53,8 +53,8 @@ function db_connection(){
 	function new_header($name="Default", $urlLink="") {
 		echo "<head>";
 		echo "	<title>$name</title>";
-		echo "	<link rel='stylesheet' href='css/normalize.css'>";
-		echo "	<link rel='stylesheet' href='css/foundation.css'>";
+		echo "	<link rel='stylesheet' href='styles/normalize.css'>";
+		echo "	<link rel='stylesheet' href='styles/foundation.css'>";
 
 		echo "	<script src='js/vendor/modernizr.js'></script>";
 		echo "</head>";

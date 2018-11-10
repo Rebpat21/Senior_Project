@@ -9,12 +9,10 @@
 	}
 
 
-	//****************  Add Query
-	//  Query people to select PersonID, FirstName, and LastName, sorting in ascending order by LastName
-$query = "SELECT idUsers, FName, LName, GradYear, idPermission, PermissionName";
+$query = "SELECT * ";
 $query .= "FROM YV_User NATURAL JOIN YV_Permissions ORDER BY LName ASC";
 
-	//  Execute query
+	//  Executes query
 $result = $mysqli -> query($query);
 // print_r($result);
 
