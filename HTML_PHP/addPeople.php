@@ -1,9 +1,9 @@
 <?php require_once("session.php");
-	// verify_login();
+	verify_login();
 ?>
 <?php
 	require_once("included_functions.php");
-	new_header("Database Users", "");
+	new_header("You-Vote", "Senior_Project/readPeople.php");
 	$mysqli = db_connection();
 	if (($output = message()) !== null) {
 		echo $output;
@@ -13,14 +13,18 @@
 	echo "<div class='row'>";
 	echo "<label for='left-label' class='left inline'>";
 
+
+
 	if (isset($_POST["submit"])) {
-		if( (isset($_POST["FirstName"]) && $_POST["FirstName"] !== "") && (isset($_POST["LastName"]) && $_POST["LastName"] !== "") &&(isset($_POST["Password"]) && $_POST["Password"] !== "") &&(isset($_POST["Email"]) && $_POST["Email"] !== "") &&(isset($_POST["GradYear"]) && $_POST["GradYear"] !== "") &&(isset($_POST["idPermission"]) && $_POST["idPermission"] !== "") ) {
+		if( (isset($_POST["FName"]) && $_POST["FName"] !== "") && (isset($_POST["LName"]) && $_POST["LName"] !== "") &&(isset($_POST["Password"]) && $_POST["Password"] !== "") &&(isset($_POST["Email"]) && $_POST["Email"] !== "") &&(isset($_POST["GradYear"]) && $_POST["GradYear"] !== "") &&(isset($_POST["idPermission"]) && $_POST["idPermission"] !== "") ) {
+			$password = password_encrypt($_POST["Password"]);
+
 			$query = "INSERT INTO YV_Users ";
 			$query .= "(FName, LName, Password, Email, GradYear, idPermission) ";
 			$query .= "VALUES (";
-			$query .= "'".$_POST["FirstName"]."', ";
-			$query .= "'".$_POST["LastName"]."', ";
-			$query .= "'".$_POST["Password"]."', ";
+			$query .= "'".$_POST["FName"]."', ";
+			$query .= "'".$_POST["LName"]."', ";
+			$query .= "'".$password."', ";
 			$query .= "'".$_POST["Email"]."', ";
 			$query .= "'".$_POST["GradYear"]."', ";
 			$query .= "'".$_POST["idPermission"]."') ";
@@ -28,14 +32,14 @@
 
 			if($result) {
 
-			$_SESSION["message"] = $_POST["FirstName"]." ".$_POST["LastName"]." has been added";
+			$_SESSION["message"] = $_POST["FName"]." ".$_POST["LName"]." has been added";
 				header("Location: readPeople.php");
 				exit;
 
 			}
 			else {
 
-			$_SESSION["message"] = "Error! Could not change ".$_POST["FirstName"]." ".$_POST["LastName"];
+			$_SESSION["message"] = "Error! Could not change ".$_POST["FName"]." ".$_POST["LName"];
 			}
 		}
 		else {
@@ -46,15 +50,16 @@
 	}
 	else {
 						echo '<form action = "addPeople.php" method = "post">';
-						echo '<p>First Name:<input type="text" name="FirstName">';
-						echo '<p>Last Name:<input type="text" name="LastName">';
+						echo '<p>First Name:<input type="text" name="FName">';
+						echo '<p>Last Name:<input type="text" name="LName">';
 						echo '<p>Password:<input type="text" name="Password">';
 						echo '<p>Email:<input type="text" name="Email">';
 						echo '<p>GradYear:<input type="text" name="GradYear">';
-						echo "Permissions: <select name = 'idPermissions'>";
+						echo "Permissions: <select name = 'idPermission'>";
 						echo "<option></option>";
 
-            		$query = "SELECT * FROM YV_Permissions";
+            		$query = "SELECT * FROM YV_Permissions ";
+								$query .= "WHERE idPermissions != 1";
 
                 $result=$mysqli -> query($query);
                 if($result&&$result -> num_rows>=1){

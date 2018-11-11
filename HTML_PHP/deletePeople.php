@@ -3,7 +3,7 @@
 ?>
 <?php
 	require_once("included_functions.php");
-	new_header("Here is Who's who!", "");
+	new_header("YouVote", "Senior_Project/readPeople.php");
 	$mysqli = db_connection();
 	if (($output = message()) !== null) {
 		echo $output;
@@ -11,13 +11,12 @@
 
   	if (isset($_GET["id"]) && $_GET["id"] !== "") {
  		$ID = $_GET["id"];
-//////////////////////////////////////////////////////////////////////////////////////
-		// Create a query to delete this id from persons
-		$query = "DELETE FROM people WHERE PersonID =".$ID;
+		// Query to delete this id from persons
+		$query = "DELETE FROM YV_Users WHERE idUsers =".$ID;
 
 		// Execute query
 		$result = $mysqli->query($query);
-//////////////////////////////////////////////////////////////////////////////////////
+		
 		if ($result && $mysqli->affected_rows === 1) {
 			$_SESSION["message"] = "Person successfully deleted!";
 			$output = message();
@@ -41,4 +40,4 @@
 
 ?>
 
-<?php  new_footer("Who's Who", $mysqli); ?>
+<?php  new_footer("You-Vote", $mysqli); ?>

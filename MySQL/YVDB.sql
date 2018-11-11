@@ -186,4 +186,4 @@ INSERT INTO YV_Permissions VALUES (1, "Administrator");
 INSERT INTO YV_Permissions VALUES (2, "Teacher");
 INSERT INTO YV_Permissions VALUES (3, "Student");
 
-INSERT INTO YV_Users (FName, LName, Password, Email, idPermission) VALUES ("Patrick", "Freel", "Password", "freelpatrick@hotmail.com", 1)
+INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "Freel", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "freelpatrick@hotmail.com", "NA", 1)
