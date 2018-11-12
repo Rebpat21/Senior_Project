@@ -24,13 +24,14 @@ $result = $mysqli -> query($query);
 		echo "<center>";
 		echo "<h2>Here are the Polls you've created</h2>";
 		echo "<table>";
-		echo "<tr><th>Poll</th><th></th><th></th></tr>";
+		echo "<tr><th>Poll</th><th></th><th></th><th></th></tr>";
 		while ($row = $result->fetch_assoc())  {
 			echo "<tr>";
 			//Output FirstName and LastName
   		echo "<td style='text-align:center'>"." ".$row['PollName']."</td>";
 			echo "<td>&nbsp;<a href = 'editPeople.php?id=".urlencode($row["id"])."'>Edit</a>&nbsp;&nbsp;</td>";
 			echo "<td>&nbsp;<a href = 'deletePeople.php?id=".urlencode($row["id"])." ' onclick='return confirm('Are you sure?');'>Delete</a>&nbsp;&nbsp;</td>";
+			echo "<td>&nbsp;<a href = 'results.php?id=".urlencode($row["id"])."'>Results</a>&nbsp;&nbsp;</td>";
 
 			echo "</tr>";
 		}

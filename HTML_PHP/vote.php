@@ -1,3 +1,7 @@
+<style>
+<?php  include 'styles/voteCSS.css';?>
+</style>
+
 <?php
     //include and initialize Poll class
     include 'Poll.class.php';

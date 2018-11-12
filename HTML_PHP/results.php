@@ -1,3 +1,8 @@
+<style>
+<?php  include 'styles/resultsCSS.css';?>
+</style>
+
+
 <?php
 //include and initialize Poll class
 include 'Poll.class.php';
@@ -33,4 +38,4 @@ if(!empty($pollResult['options'])){ $i=0;
   </div>
 </div>
 <?php $i++; } } ?>
-<a href="index.php">Back To Poll</a>
+<a href="readPollsStud.php">Back To Poll</a>
