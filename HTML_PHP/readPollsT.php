@@ -2,7 +2,7 @@
 	require_once("session.php");
 	require_once("included_functions.php");
 	verify_login();
-	new_header("You-Vote", "readPollsT.php");
+	new_header("You-Vote", "Senior_Project/readPollsT.php");
 	$mysqli = db_connection();
 	if (($output = message()) !== null) {
 		echo $output;
@@ -24,10 +24,10 @@ $result = $mysqli -> query($query);
 		while ($row = $result->fetch_assoc())  {
 			echo "<tr>";
 			//Output FirstName and LastName
-  		echo "<td style='text-align:center'>"." ".$row['PollName']."</td>";
-			echo "<td>&nbsp;<a href = 'editPeople.php?id=".urlencode($row["id"])."'>Edit</a>&nbsp;&nbsp;</td>";
-			echo "<td>&nbsp;<a href = 'deletePeople.php?id=".urlencode($row["id"])." ' onclick='return confirm('Are you sure?');'>Delete</a>&nbsp;&nbsp;</td>";
-			echo "<td>&nbsp;<a href = 'results.php?id=".urlencode($row["id"])."'>Results</a>&nbsp;&nbsp;</td>";
+			echo "<td style='text-align:center'>"." ".$row['subject']."</td>";
+			echo "<td>&nbsp;<a href = 'editPoll.php?id=".urlencode($row["id"])."'>Edit</a>&nbsp;&nbsp;</td>";
+			echo "<td>&nbsp;<a href = 'deletePoll.php?id=".urlencode($row["id"])." ' onclick='return confirm('Are you sure?');'>Delete</a>&nbsp;&nbsp;</td>";
+			echo "<td>&nbsp;<a href = 'voteT.php?id=".urlencode($row["id"])."'>View</a>&nbsp;&nbsp;</td>";
 
 			echo "</tr>";
 		}
