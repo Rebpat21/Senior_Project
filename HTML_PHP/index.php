@@ -28,7 +28,7 @@
 			if ($result && $result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				if (password_check($password, $row["Password"])) {
-					$_SESSION["username"] = $row["username"];
+					$_SESSION["username"] = $row["Email"];
 					$_SESSION["admin_id"] = $row["idUsers"];
           if($row["idPermission"] == 3){
             redirect_to("readPollsStud.php");

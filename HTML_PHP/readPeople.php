@@ -30,11 +30,10 @@ $result = $mysqli -> query($query);
 			echo "<td style='text-align:center'>"." ".$row['GradYear']."</td>";
 			echo "<td>&nbsp;<a href = 'editPeople.php?id=".urlencode($row["idUsers"])."'>Edit</a>&nbsp;&nbsp;</td>";
 			echo "<td>&nbsp;<a href = 'deletePeople.php?id=".urlencode($row["idUsers"])." ' onclick='return confirm('Are you sure?');'>Delete</a>&nbsp;&nbsp;</td>";
-
 			echo "</tr>";
 		}
 		echo "</table>";
-		echo "<br /><br /><a href='addPeople.php'>Add a person</a> | <a href='addLogin.php'>Add an admin</a> | <a href='logout.php'>Logout</a>";
+		echo "<br /><br /><a href='addPeople.php'>Add a person</a> | <a href='addLogin.php'>Add an admin</a> | <a href = 'readPollsA.php'>View All Polls</a> | <a href='logout.php'>Logout</a>";
 		echo "</center>";
 		echo "</div>";
 	}

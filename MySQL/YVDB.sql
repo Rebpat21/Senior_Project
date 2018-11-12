@@ -91,3 +91,11 @@ INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1,
 INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Ok', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
 INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Could be better', '2018-11-08 08:20:25', '2018-11-08 08:20:25', '1');
 INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Awful', '2018-11-08 08:20:25', '2018-11-08 08:20:25', '1');
+
+INSERT INTO YV_Polls (subject, idTeacher, Created, Changed, Status) VALUES ("How's the Presentation so Far?", 2, '2018-11-07 04:13:13', '2018-11-07 04:13:13', '1');
+
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (2, 'Amazing!', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (2, 'Good', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (2, 'Ok', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (2, 'Could be better', '2018-11-08 08:20:25', '2018-11-08 08:20:25', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (2, 'Awful', '2018-11-08 08:20:25', '2018-11-08 08:20:25', '1');
