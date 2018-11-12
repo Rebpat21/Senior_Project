@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS YV_Polls, YV_Users, YV_Permissions ;
+DROP TABLE IF EXISTS YV_Poll_Votes, YV_Poll_Options, YV_Polls, YV_Users, YV_Permissions ;
 -- DROP TABLE IF EXISTS YV_Groups ;
 
 
@@ -26,164 +26,67 @@ CREATE TABLE IF NOT EXISTS YV_Users (
 
 
 CREATE TABLE IF NOT EXISTS YV_Polls (
-  idPolls INT NOT NULL AUTO_INCREMENT,
-  PollName VARCHAR(45) NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
+  subject VARCHAR(45) NOT NULL,
   idTeacher INT NOT NULL,
-  -- idGroup INT NOT NULL,
-  Created DATE NOT NULL,
-  PRIMARY KEY (idPolls),
+  -- Data VARCHAR(5000) NOT NULL,
+  -- idGroup INT NULL,
+  Created DATETIME NOT NULL,
+  Changed DATETIME NOT NULL,
+  Status ENUM('1', '0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  PRIMARY KEY (id),
     FOREIGN KEY (idTeacher)
     REFERENCES YV_Users (idUsers)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-)ENGINE = InnoDB;
+    -- FOREIGN KEY (idGroup)
+    -- REFERENCES YV_Groups (idGroup)
+    -- ON UPDATE NO ACTION
+    -- ON DELETE NO ACTION)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
--- FOREIGN KEY (idGroup)
--- REFERENCES YV_Groups (idGroup)
--- ON UPDATE NO ACTION
--- ON DELETE NO ACTION)
+CREATE TABLE IF NOT EXISTS YV_Poll_Options (
+  id INT NOT NULL AUTO_INCREMENT,
+  poll_id INT NOT NULL,
+  Name VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL,
+  Created DATETIME NOT NULL,
+  Changed DATETIME NOT NULL,
+  Status ENUM('1', '0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  PRIMARY KEY (id),
+    FOREIGN KEY (poll_id)
+    REFERENCES YV_Polls (id)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
--- CREATE TABLE IF NOT EXISTS YV_Groups (
---   idGroup INT NOT NULL AUTO_INCREMENT,
---   GroupName VARCHAR(50) NOT NULL,
---   idTeacher INT NOT NULL,
---   Member1 INT NULL,
---   Member2 INT NULL,
---   Member3 INT NULL,
---   Member4 INT NULL,
---   Member5 INT NULL,
---   Member6 INT NULL,
---   Member7 INT NULL,
---   Member8 INT NULL,
---   Member9 INT NULL,
---   Member10 INT NULL,
---   Member11 INT NULL,
---   Member12 INT NULL,
---   Member13 INT NULL,
---   Member14 INT NULL,
---   Member15 INT NULL,
---   Member16 INT NULL,
---   Member17 INT NULL,
---   Member18 INT NULL,
---   Member19 INT NULL,
---   Member20 INT NULL,
---   Member21 INT NULL,
---   Member22 INT NULL,
---   Member23 INT NULL,
---   Member24 INT NULL,
---   Member25 INT NULL,
---   PRIMARY KEY (idGroup),
---     FOREIGN KEY (idTeacher)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member1)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member2)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member3)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member4)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member5)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member6)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member7)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member8)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member9)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member10)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member11)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member12)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member13)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member14)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member15)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member16)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member17)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member18)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member19)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member20)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member21)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member22)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member23)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member24)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---     FOREIGN KEY (Member25)
---     REFERENCES YV_Users (idUsers)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION)
--- ENGINE = InnoDB;
-
+CREATE TABLE IF NOT EXISTS YV_Poll_Votes (
+  id INT NOT NULL AUTO_INCREMENT,
+  poll_id INT NOT NULL,
+  poll_option_id INT NOT NULL,
+  vote_count BIGINT(10) NOT NULL,
+  PRIMARY KEY (id),
+    FOREIGN KEY (poll_id)
+    REFERENCES YV_Polls (id)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (poll_option_id)
+    REFERENCES YV_Poll_Options (id)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO YV_Permissions VALUES (1, "Administrator");
 INSERT INTO YV_Permissions VALUES (2, "Teacher");
 INSERT INTO YV_Permissions VALUES (3, "Student");
 
-INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "Freel", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "freelpatrick@hotmail.com", "NA", 1)
+INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "FreelA", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "patricka@hotmail.com", "NA", 1);
+INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "FreelT", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "patrickt@hotmail.com", "NA", 2);
+INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "FreelS", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "patricks@hotmail.com", "15", 3);
+
+INSERT INTO YV_Polls (subject, idTeacher, Created, Changed, Status) VALUES ('Which is Your Favorite Website for PHP Programming?', 2, '2016-11-07 04:13:13', '2016-11-07 04:13:13', '1');
+
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'CodexWorld', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'SitePoint', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Envato Tuts+', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Others', '2016-11-08 08:20:25', '2016-11-08 08:20:25', '1');
