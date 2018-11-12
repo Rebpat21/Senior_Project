@@ -18,7 +18,7 @@ $result = $mysqli -> query($query);
 	if ($result && $result->num_rows > 0) {
 		echo "<div class='row'>";
 		echo "<center>";
-		echo "<h2>Here are the Polls you've created</h2>";
+		echo "<h2>Here are the Polls you've Created</h2>";
 		echo "<table>";
 		echo "<tr><th>Poll</th><th></th><th></th><th></th></tr>";
 		while ($row = $result->fetch_assoc())  {

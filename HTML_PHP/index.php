@@ -10,11 +10,6 @@
 ?>
 <?php
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//     Step 7.  Check email and password.  If all is good then set $_SESSION and log in
-//				NOTE:  some of your code may be taken from addLogin.php step for, but you
-//					   will need to be sure and set the $_SESSION variables
-
 	if (isset($_POST["submit"])) {
 		if (isset($_POST["username"]) && $_POST["username"] !== "" && isset($_POST["password"]) &&
 		$_POST["password"] !== "") {
@@ -68,10 +63,6 @@
 
 		<h3>Welcome!</h3>
 
-<!--//////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!--    Step 6. Create textboxes for Login -->
-<!--            Note:  you can copy and paste from addLogin.php part 1b.  just be sure to change -->
-<!--                   action = "addLogin.php"    to action = "index.php"  -->
 
 			<form action="index.php" method="post">
 				<p>Email: <input type="text" name="username" /> </p>

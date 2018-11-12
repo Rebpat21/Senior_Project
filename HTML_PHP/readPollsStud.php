@@ -30,6 +30,7 @@ $result = $mysqli -> query($query);
 			echo "</tr>";
 		}
 	}
-?>
 
+?>
+<a href='logout.php'>Logout</a>
 <?php  new_footer("You-Vote", $mysqli); ?>
