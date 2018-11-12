@@ -41,6 +41,6 @@ if(isset($_POST['voteSubmit'])){
         } ?>
     </ul>
     <input type="hidden" name="pollID" value="<?php echo $pollData['poll']['id']; ?>">
-    <input type="submit" name="voteSubmit" class="button" value="Vote">
+    <a href="results.php?pollID=<?php echo $pollData['poll']['id']; ?>">Results</a>
     </form>
 </div>

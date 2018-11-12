@@ -2,7 +2,7 @@
 	require_once("session.php");
 	require_once("included_functions.php");
 	verify_login();
-	new_header("You-Vote", "readPollsStud.php");
+	new_header("You-Vote", "Senior_Project/readPollsStud.php");
 	$mysqli = db_connection();
 	if (($output = message()) !== null) {
 		echo $output;

@@ -14,8 +14,8 @@
 		if (isset($_POST["username"]) && $_POST["username"] !== "" && isset($_POST["password"]) &&
 		$_POST["password"] !== "") {
 //Grab posted values for email and password.
-//IMPORTANT CHANGE: Unlike in addLogin.php, you will NOT encrypt password
-//Once we check if the email exists, we will do the encryption in
+
+//Once we check if the email exists, does the encryption in
 //the function password_check, which returns true if the passwords match
 		$username = $_POST["username"];
 		$password = $_POST["password"];
@@ -30,16 +30,16 @@
 				if (password_check($password, $row["Password"])) {
 					$_SESSION["username"] = $row["username"];
 					$_SESSION["admin_id"] = $row["idUsers"];
-          if($row["idPermission"] = 3){
+          if($row["idPermission"] == 3){
             redirect_to("readPollsStud.php");
-          } elseif ($row["idPermission"] = 2) {
+          } elseif ($row["idPermission"] == 2) {
             redirect_to("readPollsT.php");
           } else {
             redirect_to("readPeople.php");
 
           }
 				}
-//If the attempted password DOES NOT match the database password, output an error
+//If the attempted password DOES NOT match the database password, outputs an error
 				else {
 					$_SESSION["message"] = "Email/Password not found";
 					redirect_to("index.php");
@@ -53,9 +53,6 @@
 	} //closes first if-statement
 
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 ?>
 
 		<div class='row'>
@@ -63,14 +60,11 @@
 
 		<h3>Welcome!</h3>
 
-
 			<form action="index.php" method="post">
 				<p>Email: <input type="text" name="username" /> </p>
 				<p>Password: <input type="password" name="password" value="" /> </p>
 				<input type="submit" name="submit" class="button tiny round" value="Login" />
 			</form>
-
-<!--//////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 	</div>
 	</label>
