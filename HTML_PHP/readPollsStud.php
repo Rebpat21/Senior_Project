@@ -29,6 +29,7 @@ $result = $mysqli -> query($query);
 			echo "<td>&nbsp;<a href = 'vote.php?id=".urlencode($row["id"])."'>Vote</a>&nbsp;&nbsp;</td>";
 			echo "</tr>";
 		}
+		echo "<table>";
 	}
 
 ?>
