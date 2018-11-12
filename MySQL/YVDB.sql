@@ -84,9 +84,10 @@ INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VAL
 INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "FreelT", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "patrickt@hotmail.com", "NA", 2);
 INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "FreelS", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "patricks@hotmail.com", "15", 3);
 
-INSERT INTO YV_Polls (subject, idTeacher, Created, Changed, Status) VALUES ('Which is Your Favorite Website for PHP Programming?', 2, '2016-11-07 04:13:13', '2016-11-07 04:13:13', '1');
+INSERT INTO YV_Polls (subject, idTeacher, Created, Changed, Status) VALUES ("How's the Presentation so Far?", 2, '2018-11-07 04:13:13', '2018-11-07 04:13:13', '1');
 
-INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'CodexWorld', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1');
-INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'SitePoint', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1');
-INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Envato Tuts+', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1');
-INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Others', '2016-11-08 08:20:25', '2016-11-08 08:20:25', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Amazing!', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Good', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Ok', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Could be better', '2018-11-08 08:20:25', '2018-11-08 08:20:25', '1');
+INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Awful', '2018-11-08 08:20:25', '2018-11-08 08:20:25', '1');
