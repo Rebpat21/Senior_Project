@@ -10,7 +10,7 @@
 	}
 	if (isset($_POST["submit"])) {
 		$ID = $_GET["id"];
-		
+
 		if($row["Password"] = $_POST['Password']){
 			$password = $row['Password'];
 		} else {
@@ -47,7 +47,7 @@
 
 		if(isset($_GET["id"]) && $_GET["id"]!==""){
 			$ID = $_GET["id"];
-			$query = "SELECT * FROM YV_Users NATURAL JOIN YV_Permissions WHERE idUsers =".$ID;
+			$query = "SELECT * FROM YV_Users WHERE idUsers =".$ID;
 			echo $query;
 		}
 
@@ -68,7 +68,7 @@
 			echo '<p>Password:<input type="text" name="Password" value="'.$row["Password"].'">';
 			echo '<p>Email:<input type="text" name="Email" value="'.$row["Email"].'">';
 			echo '<p>GradYear:<input type="text" name="GradYear" value="'.$row["GradYear"].'">';
-			echo 'Permission: <select name="idPermission" value = "'.$row["PermissionName"].'">';
+			echo 'Permission: <select name="idPermission">';
 			echo "<option></option>";
 
 					$query = "SELECT * FROM YV_Permissions";

@@ -35,7 +35,14 @@
 				if (password_check($password, $row["Password"])) {
 					$_SESSION["username"] = $row["username"];
 					$_SESSION["admin_id"] = $row["idUsers"];
-					redirect_to("readPeople.php");
+          if($row["idPermission"] = 3){
+            redirect_to("readPollsStud.php");
+          } elseif ($row["idPermission"] = 2) {
+            redirect_to("readPollsT.php");
+          } else {
+            redirect_to("readPeople.php");
+
+          }
 				}
 //If the attempted password DOES NOT match the database password, output an error
 				else {
