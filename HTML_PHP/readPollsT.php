@@ -8,9 +8,6 @@
 		echo $output;
 	}
 
-
-	//****************  Add Query
-	//  Query people to select PersonID, FirstName, and LastName, sorting in ascending order by LastName
 $query = "SELECT * ";
 $query .= "FROM YV_Polls";
 
@@ -18,7 +15,6 @@ $query .= "FROM YV_Polls";
 $result = $mysqli -> query($query);
 // print_r($result);
 
-// /********************    Uncomment Once Code Completed  **************************
 	if ($result && $result->num_rows > 0) {
 		echo "<div class='row'>";
 		echo "<center>";
