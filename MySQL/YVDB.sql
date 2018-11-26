@@ -25,13 +25,13 @@ CREATE TABLE IF NOT EXISTS YV_Users (
 
 
 CREATE TABLE IF NOT EXISTS YV_Polls (
-  poll_id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   subject VARCHAR(100) NOT NULL,
   idTeacher INT NOT NULL,
   Created DATETIME NOT NULL,
   Changed DATETIME NOT NULL,
   Status ENUM('1', '0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
-  PRIMARY KEY (poll_id),
+  PRIMARY KEY (id),
     FOREIGN KEY (idTeacher)
     REFERENCES YV_Users (idUsers)
     ON DELETE NO ACTION
@@ -40,49 +40,36 @@ CREATE TABLE IF NOT EXISTS YV_Polls (
 
 
 CREATE TABLE IF NOT EXISTS YV_Poll_Options (
-  YV_Poll_Options_id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   poll_id INT NOT NULL,
   Name VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL,
   Created DATETIME NOT NULL,
   Changed DATETIME NOT NULL,
   Status ENUM('1', '0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
-  PRIMARY KEY (YV_Poll_Options_id),
+  PRIMARY KEY (id),
     FOREIGN KEY (poll_id)
-    REFERENCES YV_Polls (poll_id)
+    REFERENCES YV_Polls (id)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 CREATE TABLE IF NOT EXISTS YV_Poll_Votes (
-  YV_Poll_Votes_id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   poll_id INT NOT NULL,
   poll_option_id INT NOT NULL,
-  vote_count BIGINT(10) NOT NULL,
-  PRIMARY KEY (YV_Poll_Votes_id),
+  vote_count INT NOT NULL,
+  PRIMARY KEY (id),
     FOREIGN KEY (poll_id)
-    REFERENCES YV_Polls (poll_id)
+    REFERENCES YV_Polls (id)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
     FOREIGN KEY (poll_option_id)
-    REFERENCES YV_Poll_Options (YV_Poll_Options_id)
+    REFERENCES YV_Poll_Options (id)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS hasVoted (
-  idhasVoted INT NOT NULL AUTO_INCREMENT,
-  idPoll INT NOT NULL,
-  idUser INT NOT NULL,
-  PRIMARY KEY (idhasVoted),
-    FOREIGN KEY (idPoll)
-    REFERENCES YV_Polls (poll_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (idUser)
-    REFERENCES YV_Users (idUsers)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-)ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Groups (
   idGroups INT NOT NULL AUTO_INCREMENT,
@@ -95,10 +82,11 @@ CREATE TABLE IF NOT EXISTS Groups (
     ON UPDATE NO ACTION
 )ENGINE = InnoDB;
 
+
 CREATE TABLE IF NOT EXISTS GroupMembers (
-  idGroupMembers INT NOT NULL AUTO_INCREMENT,
-  idGroup INT NOT NULL,
-  Member INT NOT NULL,
+  idGroupMembers INT NULL AUTO_INCREMENT,
+  idGroup INT NULL,
+  Member INT NULL,
   PRIMARY KEY (idGroupMembers),
     FOREIGN KEY (idGroup)
     REFERENCES Groups (idGroups)
@@ -110,6 +98,23 @@ CREATE TABLE IF NOT EXISTS GroupMembers (
     ON UPDATE NO ACTION
 )ENGINE = InnoDB;
 
+
+CREATE TABLE IF NOT EXISTS hasVoted (
+  idhasVoted INT NOT NULL AUTO_INCREMENT,
+  idPoll INT NOT NULL,
+  idU INT NOT NULL,
+  PRIMARY KEY (idhasVoted),
+    FOREIGN KEY (idPoll)
+    REFERENCES YV_Polls (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (idU)
+    REFERENCES YV_Users (idUsers)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)ENGINE = InnoDB;
+
+
 INSERT INTO YV_Permissions VALUES (1, "Administrator");
 INSERT INTO YV_Permissions VALUES (2, "Teacher");
 INSERT INTO YV_Permissions VALUES (3, "Student");
@@ -118,8 +123,9 @@ INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VAL
 INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "FreelT", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "patrickt@hotmail.com", "NA", 2);
 INSERT INTO YV_Users (FName, LName, Password, Email, GradYear, idPermission) VALUES ("Patrick", "FreelS", "$2y$10$OGE0ZDI3NjY3YTEyMWMzNepUSGpHlYsESNT63kSPuvZ7cj8QRoaqi", "patricks@hotmail.com", "15", 3);
 
-
 INSERT INTO YV_Polls (subject, idTeacher, Created, Changed, Status) VALUES ("Does this Poll work?", 2, '2018-11-07 04:13:13', '2018-11-07 04:13:13', '1');
 
 INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Yes', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
 INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'No', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
+
+INSERT INTO hasVoted (idPoll, idU) VALUES (1, 1)
