@@ -15,7 +15,7 @@
 //  Checks to see if username and password text boxes are filled in.
 //  If they are, then checks to see if the username already exists
 //  If the username does not exist, adds the username and their hashed password
-//  to the admins table in database
+//  to the YV_Users table in database
 
 	if (isset($_POST["submit"])) {
 		if (isset($_POST["FName"]) && $_POST["FName"] !== "" && isset($_POST["LName"]) && $_POST["LName"] !== "" && isset($_POST["username"]) && $_POST["username"] !== "" && isset($_POST["password"]) &&

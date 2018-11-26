@@ -32,16 +32,6 @@ $result = $mysqli -> query($query);
 			echo "<td>&nbsp;<a href = 'editPeople.php?id=".urlencode($row["id"])."'>Edit</a>&nbsp;&nbsp;</td>";
 			echo "<td>&nbsp;<a href = 'deletePeople.php?id=".urlencode($row["id"])." ' onclick='return confirm('Are you sure?');'>Delete</a>&nbsp;&nbsp;</td>";
 
-
-
-
-
-
-			//Create an Edit and Delete link
-			//Edit should direct to editPeople.php, sending PersonID in URL
-			//Delete should direct to deletePeople.php, sending PersonID in URL - include onclick to confirm delete
-
-
 			echo "</tr>";
 		}
 		echo "</table>";

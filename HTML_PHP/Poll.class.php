@@ -1,4 +1,7 @@
 <?php
+
+// require_once("included_functions.php");
+
 /*
  * Poll Management Class
  * This class is used to manage the online poll & voting system
@@ -17,6 +20,7 @@ class Poll{
     private $pollTbl = 'YV_Polls';
     private $optTbl  = 'YV_Poll_Options';
     private $voteTbl = 'YV_Poll_Votes';
+    private $hasVote = 'hasVoted';
 
     public function __construct(){
         if(!$this->db){
@@ -89,7 +93,7 @@ class Poll{
      * @param array of poll option data
      */
     public function vote($data = array()){
-        if(!isset($data['poll_id']) || !isset($data['poll_option_id']) || isset($_COOKIE[$data['poll_id']])) {
+        if(!isset($data['poll_id']) || !isset($data['poll_option_id'])) {
             return false;
         }else{
             $sql = "SELECT * FROM ".$this->voteTbl." WHERE poll_id = ".$data['poll_id']." AND poll_option_id = ".$data['poll_option_id'];

@@ -9,7 +9,8 @@
 	}
 
 $query = "SELECT * ";
-$query .= "FROM YV_Polls";
+$query .= "FROM YV_Polls ";
+$query .= "WHERE idTeacher =".$_SESSION["admin_id"];
 
 	//  Execute query
 $result = $mysqli -> query($query);

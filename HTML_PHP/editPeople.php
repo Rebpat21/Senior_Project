@@ -25,7 +25,7 @@
 		$query .= ", Password = '".$password."'";
 		$query .= ", Email = '".$_POST['Email']."'";
 		$query .= ", GradYear = '".$_POST['GradYear']."'";
-		$query .= ", idPermission = '".$_POST['idPermission']."'";
+		$query .= ", idPermission = '".$_POST['idP']."'";
 		$query .= " WHERE PersonID =".$ID;
 
 
@@ -68,10 +68,10 @@
 			echo '<p>Password:<input type="text" name="Password" value="'.$row["Password"].'">';
 			echo '<p>Email:<input type="text" name="Email" value="'.$row["Email"].'">';
 			echo '<p>GradYear:<input type="text" name="GradYear" value="'.$row["GradYear"].'">';
-			echo 'Permission: <select name="idPermission">';
-			echo "<option></option>";
+			echo 'Permission: <select name="idP">';
+			echo "<option>""</option>";
 
-					$query = "SELECT * FROM YV_Permissions";
+					$query = "SELECT idPermissions, PermissionName FROM YV_Permissions";
 
 					$result=$mysqli -> query($query);
 					if($result&&$result -> num_rows>=1){

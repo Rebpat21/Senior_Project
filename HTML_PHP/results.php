@@ -38,4 +38,4 @@ if(!empty($pollResult['options'])){ $i=0;
   </div>
 </div>
 <?php $i++; } } ?>
-<a href="readPollsStud.php">Back To Poll</a>
+<a href="readPollsStud.php">Back To Polls</a>

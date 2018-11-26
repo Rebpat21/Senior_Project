@@ -1,5 +1,9 @@
 <style>
-<?php  include 'styles/voteCSS.css';?>
+<?php
+include 'styles/voteCSS.css';
+require_once("session.php");
+require_once("included_functions.php");
+?>
 </style>
 
 <?php
@@ -17,16 +21,19 @@ if(isset($_POST['voteSubmit'])){
     $voteData = array(
         'poll_id' => $_POST['pollID'],
         'poll_option_id' => $_POST['voteOpt']
+        // 'hasVoted' => $_SESSION['admin_id']
     );
     //insert vote data
     $voteSubmit = $poll->vote($voteData);
     if($voteSubmit){
-        //store in $_COOKIE to signify the user has voted
-        setcookie($_POST['pollID'], 1, time()+60*60*24*365);
+      // $query = "INSERT INTO hasVoted (idPoll, idU) VALUES ('".$_SESSION["admin_id"]."', '".$_POST["pollID"]."')";
+      // $result = $mysqli->query($query);
 
-        $statusMsg = 'Your vote has been submitted successfully.';
+        // setcookie($_POST['pollID'], 1, time()+60*60*24*365);
+        redirect_to("readPollsStud.php");
+        // $statusMsg = 'Your vote has been submitted successfully.';
     }else{
-        $statusMsg = 'Your vote already had submitted.';
+        $statusMsg = 'Your vote has already been submitted.';
     }
 }
 ?>

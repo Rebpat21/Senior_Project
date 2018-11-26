@@ -8,9 +8,9 @@
 		echo $output;
 	}
 
-$query = "SELECT * ";
-$query .= "FROM YV_Polls NATURAL JOIN YV_Users ";
-$query .= "WHERE idTeacher = idUsers";
+$query = "SELECT * FROM YV_Users NATURAL JOIN YV_Polls NATURAL JOIN hasVoted ";
+$query .= "WHERE idTeacher = idUsers ";
+$query .= "AND idU != ".$_SESSION['admin_id'];
 
 $result = $mysqli -> query($query);
 // print_r($result);
