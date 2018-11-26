@@ -20,7 +20,7 @@ class Poll{
     private $pollTbl = 'YV_Polls';
     private $optTbl  = 'YV_Poll_Options';
     private $voteTbl = 'YV_Poll_Votes';
-    private $hasVote = 'hasVoted';
+    // private $hasVote = 'hasVoted';
 
     public function __construct(){
         if(!$this->db){

@@ -2,6 +2,7 @@
 <?php
 include 'styles/voteCSS.css';
 require_once("session.php");
+verify_login();
 require_once("included_functions.php");
 ?>
 </style>
@@ -25,12 +26,16 @@ if(isset($_POST['voteSubmit'])){
     );
     //insert vote data
     $voteSubmit = $poll->vote($voteData);
+
     if($voteSubmit){
-      // $query = "INSERT INTO hasVoted (idPoll, idU) VALUES ('".$_SESSION["admin_id"]."', '".$_POST["pollID"]."')";
+
+      // $query = "INSERT INTO hasVoted (idPoll, idU) ";
+      // $query .= "VALUES ('".$_POST['pollID']."', '".$_SESSION["admin_id"]."')";
       // $result = $mysqli->query($query);
 
+      redirect_to("readPollsStud.php");
+
         // setcookie($_POST['pollID'], 1, time()+60*60*24*365);
-        redirect_to("readPollsStud.php");
         // $statusMsg = 'Your vote has been submitted successfully.';
     }else{
         $statusMsg = 'Your vote has already been submitted.';

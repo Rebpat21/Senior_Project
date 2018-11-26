@@ -128,4 +128,4 @@ INSERT INTO YV_Polls (subject, idTeacher, Created, Changed, Status) VALUES ("Doe
 INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'Yes', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
 INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) VALUES (1, 'No', '2018-11-07 11:29:31', '2018-11-07 11:29:31', '1');
 
-INSERT INTO hasVoted (idPoll, idU) VALUES (1, 1)
+INSERT INTO hasVoted (idPoll, idU) VALUES (1, 1);
