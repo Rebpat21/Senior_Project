@@ -1,5 +1,9 @@
 <style>
-<?php  include 'styles/voteCSS.css';?>
+<?php  include 'styles/voteCSS.css';
+require_once("session.php");
+verify_login();
+require_once("included_functions.php");
+?>
 </style>
 
 <?php
@@ -18,7 +22,7 @@ if(isset($_POST['voteSubmit'])){
         'poll_id' => $_POST['pollID'],
         'poll_option_id' => $_POST['voteOpt']
     );
-    //insert vote data
+    // insert vote data
     $voteSubmit = $poll->vote($voteData);
     if($voteSubmit){
         //store in $_COOKIE to signify the user has voted
@@ -42,5 +46,6 @@ if(isset($_POST['voteSubmit'])){
     </ul>
     <input type="hidden" name="pollID" value="<?php echo $pollData['poll']['id']; ?>">
     <a href="results.php?pollID=<?php echo $pollData['poll']['id']; ?>">Results</a>
+    <a href="readPollsT.php">Back</a>
     </form>
 </div>

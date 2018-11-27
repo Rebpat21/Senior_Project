@@ -21,7 +21,7 @@ $result = $mysqli -> query($query);
 		echo "<center>";
 		echo "<h2>Here are the Polls you've Created</h2>";
 		echo "<table>";
-		echo "<tr><th>Poll</th><th></th><th></th><th></th></tr>";
+		echo "<tr><th>Poll</th><th></th><th></th><th></th><th></th></tr>";
 		while ($row = $result->fetch_assoc())  {
 			echo "<tr>";
 			//Output FirstName and LastName
@@ -29,6 +29,8 @@ $result = $mysqli -> query($query);
 			echo "<td>&nbsp;<a href = 'editPoll.php?id=".urlencode($row["id"])."'>Edit</a>&nbsp;&nbsp;</td>";
 			echo "<td>&nbsp;<a href = 'deletePoll.php?id=".urlencode($row["id"])." ' onclick='return confirm('Are you sure?');'>Delete</a>&nbsp;&nbsp;</td>";
 			echo "<td>&nbsp;<a href = 'voteT.php?id=".urlencode($row["id"])."'>View</a>&nbsp;&nbsp;</td>";
+			echo "<td>&nbsp;<a href = 'addOptions.php?id=".urlencode($row["id"])."'>Add Options</a>&nbsp;&nbsp;</td>";
+
 
 			echo "</tr>";
 		}

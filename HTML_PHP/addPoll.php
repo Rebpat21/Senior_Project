@@ -9,7 +9,7 @@
 		echo $output;
 	}
 
-	echo "<h3>Add User to You-Vote Database</h3>";
+	echo "<h3>Add Poll to You-Vote Database</h3>";
 	echo "<div class='row'>";
 	echo "<label for='left-label' class='left inline'>";
 
@@ -21,21 +21,20 @@
 			$query .= "VALUES (";
 			$query .= "'".$_POST["subject"]."', ";
 			$query .= "'".$_SESSION['admin_id']."', ";
-			$query .= "'".date("Y, M, DD, h:i:sa")."', ";
-			$query .= "'".date("Y, M, DD, h:i:sa")."', ";
+			$query .= "'".date("Y-m-d, H:i:s")."', ";
+			$query .= "'".date("Y-m-d, H:i:s")."', ";
 			$query .= "'1') ";
 			$result = $mysqli -> query($query);
-
 			if($result) {
 
-			$_SESSION["message"] = "New Poll has been added";
+			$_SESSION["message"] = "New Poll has been created!";
 				header("Location: readPollsT.php");
 				exit;
 
 			}
 			else {
 
-			$_SESSION["message"] = "Error! Could not change Poll";
+			$_SESSION["message"] = "Error! Could not add Poll";
 			}
 		}
 		else {
@@ -46,7 +45,9 @@
 	}
 	else {
 						echo '<form action = "addPoll.php" method = "post">';
-						echo '<p>Poll Title:<input type="text" name="subject">';
+						echo '<p>Poll Title/Subject:<input type="text" name="subject">';
+						// echo "<h4>Add Options</h4>";
+						// echo '<p>Poll Title/Subject:<input type="text" name="Name">';
 
 						echo '<input type="submit" name="submit" class="button tiny round" value="Submit" />';
 						echo '</form>';

@@ -1,5 +1,9 @@
 <style>
-<?php  include 'styles/resultsCSS.css';?>
+<?php  include 'styles/resultsCSS.css';
+require_once("session.php");
+verify_login();
+require_once("included_functions.php");
+?>
 </style>
 
 
@@ -38,4 +42,6 @@ if(!empty($pollResult['options'])){ $i=0;
   </div>
 </div>
 <?php $i++; } } ?>
-<a href="readPollsStud.php">Back To Polls</a>
+
+
+<a href="readPollsT.php">Back To Polls</a>

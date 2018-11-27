@@ -13,6 +13,7 @@ require_once("included_functions.php");
     $poll = new Poll;
 
     //get poll and options data
+    $ID = $_GET["id"];
     $pollData = $poll->getPolls();
 ?>
 
@@ -22,7 +23,6 @@ if(isset($_POST['voteSubmit'])){
     $voteData = array(
         'poll_id' => $_POST['pollID'],
         'poll_option_id' => $_POST['voteOpt']
-        // 'hasVoted' => $_SESSION['admin_id']
     );
     //insert vote data
     $voteSubmit = $poll->vote($voteData);
@@ -33,7 +33,8 @@ if(isset($_POST['voteSubmit'])){
       // $query .= "VALUES ('".$_POST['pollID']."', '".$_SESSION["admin_id"]."')";
       // $result = $mysqli->query($query);
 
-      redirect_to("readPollsStud.php");
+      header("Location: readPollsStud.php");
+  		exit;
 
         // setcookie($_POST['pollID'], 1, time()+60*60*24*365);
         // $statusMsg = 'Your vote has been submitted successfully.';

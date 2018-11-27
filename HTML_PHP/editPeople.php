@@ -11,11 +11,11 @@
 	if (isset($_POST["submit"])) {
 		$ID = $_GET["id"];
 
-		if($row["Password"] = $_POST['Password']){
-			$password = $row['Password'];
-		} else {
-			$password = password_encrypt($_POST["Password"]);
-		}
+		// if($row["Password"] = $_POST['Password']){
+		// 	$password = $row['Password'];
+		// } else {
+		// 	$password = password_encrypt($_POST["Password"]);
+		// }
 
 		// UPDATES query on $ID
 
@@ -26,7 +26,7 @@
 		$query .= ", Email = '".$_POST['Email']."'";
 		$query .= ", GradYear = '".$_POST['GradYear']."'";
 		$query .= ", idPermission = '".$_POST['idP']."'";
-		$query .= " WHERE PersonID =".$ID;
+		$query .= " WHERE idUsers =".$ID;
 
 
 		//Outputs query results and returns to readPeople.php
@@ -39,7 +39,7 @@
 			$_SESSION["message"] = "Error! Could not change ".$_POST["FName"]." ".$_POST["LName"];
 		}
 
-		//Once the Edit has been completed, redirects to the readPeople.php webpage
+		//Once the Edit has been completed, redirects to the readPeople.php
 		header("Location: readPeople.php");
 		exit;
 	}
