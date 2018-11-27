@@ -14,7 +14,7 @@ require_once("included_functions.php");
 
     //get poll and options data
     $ID = $_GET["id"];
-    $pollData = $poll->getPolls();
+    $pollData = $poll->getPolls($ID);
 ?>
 
 <?php

@@ -65,9 +65,9 @@ class Poll{
      * Returns single or multiple poll data with respective options
      * @param string single, all
      */
-    public function getPolls($pollType = 'single'){
+    public function getPolls($ID ,$pollType = 'single'){
         $pollData = array();
-        $sql = "SELECT * FROM ".$this->pollTbl." WHERE status = '1' ORDER BY created DESC";
+        $sql = "SELECT * FROM ".$this->pollTbl." WHERE status = '1' AND id = ".$ID." ORDER BY created DESC";
         $pollResult = $this->getQuery($sql, $pollType);
         if(!empty($pollResult)){
             if($pollType == 'single'){

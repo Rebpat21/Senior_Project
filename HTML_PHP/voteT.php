@@ -10,12 +10,14 @@ require_once("included_functions.php");
     //include and initialize Poll class
     include 'Poll.class.php';
     $poll = new Poll;
+    $ID = $_GET["id"];
 
     //get poll and options data
-    $pollData = $poll->getPolls();
+    $pollData = $poll->getPolls($ID);
 ?>
 
 <?php
+$ID = $_GET["id"];
 //if vote is submitted
 if(isset($_POST['voteSubmit'])){
     $voteData = array(
