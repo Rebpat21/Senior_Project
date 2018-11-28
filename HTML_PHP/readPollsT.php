@@ -35,10 +35,13 @@ $result = $mysqli -> query($query);
 			echo "</tr>";
 		}
 		echo "</table>";
-		echo "<br /><br /><a href='addPoll.php'>Create a New Poll</a> | <a href='logout.php'>Logout</a>";
 		echo "</center>";
 		echo "</div>";
+
 	}
 ?>
+
+<br /><br /><a href='addPoll.php'>Create a New Poll</a> | <a href='logout.php'>Logout</a>;
+
 
 <?php  new_footer("You-Vote", $mysqli); ?>

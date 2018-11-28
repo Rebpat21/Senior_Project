@@ -11,11 +11,15 @@
 	if (isset($_POST["submit"])) {
 		$ID = $_GET["id"];
 
-		// if($row["Password"] = $_POST['Password']){
-		// 	$password = $row['Password'];
-		// } else {
-		// 	$password = password_encrypt($_POST["Password"]);
-		// }
+		$query2 = "SELECT Password FROM YV_Users WHERE idUsers =".$ID;
+		$result2 = $mysqli->query($query2);
+		$row2 = $result2->fetch_assoc();
+
+		if(password_check($_POST['Password'], $row2['Password'])){
+			$password = $row2['Password'];
+		} else {
+			$password = password_encrypt($_POST["Password"]);
+		}
 
 		// UPDATES query on $ID
 
@@ -25,7 +29,7 @@
 		$query .= ", Password = '".$password."'";
 		$query .= ", Email = '".$_POST['Email']."'";
 		$query .= ", GradYear = '".$_POST['GradYear']."'";
-		$query .= ", idPermission = '".$_POST['idP']."'";
+		$query .= ", idPermission = '".$_POST['idPermission']."'";
 		$query .= " WHERE idUsers =".$ID;
 
 
@@ -47,7 +51,7 @@
 
 		if(isset($_GET["id"]) && $_GET["id"]!==""){
 			$ID = $_GET["id"];
-			$query = "SELECT * FROM YV_Users WHERE idUsers =".$ID;
+			$query = "SELECT * FROM YV_Users NATURAL JOIN YV_Permissions WHERE idUsers =".$ID;
 			echo $query;
 		}
 
@@ -63,25 +67,30 @@
 
 			// Creates form with inputs for each field in people table
 			echo "<p><form action='editPeople.php?id={$ID}' method='post'>";
-			echo '<p>First Name:<input type="text" name="FirstName" value="'.$row["FName"].'">';
-			echo '<p>Last Name:<input type="text" name="LastName" value="'.$row["LName"].'">';
+			echo '<p>First Name:<input type="text" name="FName" value="'.$row["FName"].'">';
+			echo '<p>Last Name:<input type="text" name="LName" value="'.$row["LName"].'">';
 			echo '<p>Password:<input type="text" name="Password" value="'.$row["Password"].'">';
 			echo '<p>Email:<input type="text" name="Email" value="'.$row["Email"].'">';
 			echo '<p>GradYear:<input type="text" name="GradYear" value="'.$row["GradYear"].'">';
-			echo 'Permission: <select name="idP">';
-			echo "<option>""</option>";
+			echo "Rank: <select name='sRank'>";
+						$query = "SELECT * FROM YV_Permissions NATURAL JOIN YV_Users ";
+						$query .= "WHERE idPermissions = idPermission AND {$ID} = idUsers";
 
-					$query = "SELECT idPermissions, PermissionName FROM YV_Permissions";
+						$result=$mysqli -> query($query);
+						$SR = $result->fetch_assoc();
+						echo "<option value = '".$SR['idPermissions']."'>".$SR['PermissionName']."</option>";
 
-					$result=$mysqli -> query($query);
-					if($result&&$result -> num_rows>=1){
-						while($row=$result -> fetch_assoc()){
-							echo "<option value ='".$row['idPermissions']."'>".$row['PermissionName']."</option>";
-						}
-					} else {
-						echo "<h2>No query results</h2>";
-					}
-			echo "</select>";
+								$query = "SELECT * FROM YV_Permissions WHERE idPermissions !=".$SR['idPermissions'];
+
+								$result=$mysqli -> query($query);
+								if($result&&$result -> num_rows>=1){
+									while($row=$result -> fetch_assoc()){
+										echo "<option value ='".$row['idPermissions']."'>".$row['PermissionName']."</option>";
+									}
+								} else {
+									echo "<h2>No query results</h2>";
+								}
+						echo "</select>";
 			echo '<input type="submit" name="submit" class="button tiny round" value="Update User" />';
 			echo '</form>';
 
@@ -90,7 +99,7 @@
 			echo "</div>";
 
 		}
-		//Query failed to exit. Return to readPeople.php and output error
+		//Query failed to exit. Returns to readPeople.php and output error
 		else {
 			$_SESSION["message"] = "Person could not be found!";
 			header("Location: readPeople.php");
