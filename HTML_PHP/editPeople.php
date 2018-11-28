@@ -52,7 +52,7 @@
 		if(isset($_GET["id"]) && $_GET["id"]!==""){
 			$ID = $_GET["id"];
 			$query = "SELECT * FROM YV_Users NATURAL JOIN YV_Permissions WHERE idUsers =".$ID;
-			echo $query;
+			// echo $query;
 		}
 
 		$result = $mysqli->query($query);
@@ -72,7 +72,7 @@
 			echo '<p>Password:<input type="text" name="Password" value="'.$row["Password"].'">';
 			echo '<p>Email:<input type="text" name="Email" value="'.$row["Email"].'">';
 			echo '<p>GradYear:<input type="text" name="GradYear" value="'.$row["GradYear"].'">';
-			echo "Rank: <select name='sRank'>";
+			echo "Permissions: <select name='idPermission'>";
 						$query = "SELECT * FROM YV_Permissions NATURAL JOIN YV_Users ";
 						$query .= "WHERE idPermissions = idPermission AND {$ID} = idUsers";
 

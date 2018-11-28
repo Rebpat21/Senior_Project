@@ -1,7 +1,7 @@
 <?php require_once("session.php"); ?>
 <?php
 	require_once("included_functions.php");
-	new_header("You-Vote", "Senior_Project/readPollsStud.php");
+	new_header("You-Vote", "Senior_Project/index.php");
 	$mysqli = db_connection();
 	if (($output = message()) !== null) {
 		echo $output;

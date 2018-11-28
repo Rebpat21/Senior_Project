@@ -39,12 +39,12 @@ body {
   font-size: 100%; }
 
 body {
-  background: white;
+  /* background: white; */
   /*background: #FAEFCF;*/
-  /* background: #ceb79a; */
+  background: #89cff0;
   /*color: #3d3225;*/
   /*color: blue;*/
-  color: #ceb79a;
+  color: #89cff0;
   /*color: #cfd6c2;*/
 
 
@@ -1105,8 +1105,8 @@ button, .button {
   padding-left: 2rem;
   font-size: 1rem;
 
-  background-color: #af9370;
-  border-color: #7a664d;
+  background-color: #ED2939;
+  border-color: #000;
 
   color: white;
   transition: background-color 300ms ease-out; }
@@ -1233,7 +1233,7 @@ meta.foundation-mq-topbar {
 /* Wrapped around .top-bar to contain to grid width */
 .contain-to-grid {
   width: 100%;
-  background: #af9370; }
+  background: #1034a6; }
   .contain-to-grid .top-bar {
     margin-bottom: 0; }
 
@@ -1261,7 +1261,7 @@ meta.foundation-mq-topbar {
   height: 45px;
   line-height: 45px;
   position: relative;
-  background: #af9370;
+  background: #0f52ba;
   margin-bottom: 0; }
   .top-bar ul {
     margin-bottom: 0;
@@ -1523,7 +1523,7 @@ meta.foundation-mq-topbar {
 
 @media only screen and (min-width: 40.063em) {
   .top-bar {
-    background: #af9370;
+    background: #0f52ba;
     *zoom: 1;
     overflow: visible; }
     .top-bar:before, .top-bar:after {
@@ -1768,8 +1768,8 @@ meta.foundation-mq-topbar {
     border-color: #de770f;
     color: #f7eadc; }
   .alert-box.info {
-    background-color: #a0d3e8;
-    border-color: #74bfdd;
+    background-color: #ed2939;
+    border-color: #000;
     color: #4f4f4f; }
   .alert-box.alert-close {
     opacity: 0; }
@@ -2821,11 +2821,11 @@ td {
 
 /* Default Link Styles */
 a {
-  color: #af9370;
+  color: #ffffff;
   text-decoration: none;
   line-height: inherit; }
   a:hover, a:focus {
-    color: #0078a0; }
+    color: #ffffff; }
   a img {
     border: none; }
 
@@ -2850,14 +2850,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
-  color: #3d3225;
+  color: #ffffff;
   text-rendering: optimizeLegibility;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
   line-height: 1.4; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     font-size: 60%;
-    color: #6f6f6f;
+    color: #ffffff;
     line-height: 0; }
 
 h1 {
@@ -4238,7 +4238,7 @@ ul.off-canvas-list {
     max-width: 800px; }
 
 table {
-  background: #ceb79a;
+  background: #1034a6;
   margin-bottom: 1.25rem;
   border: solid 1px #dddddd; }
   table thead,
@@ -4251,15 +4251,15 @@ table {
       padding: 0.5rem 0.625rem 0.625rem;
       font-size: 0.875rem;
       font-weight: bold;
-      color: #3d3225;
+      color: #ff0800;
       text-align: left; }
   table tr th,
   table tr td {
     padding: 0.5625rem 0.625rem;
     font-size: 0.875rem;
-    color: #3d3225; }
+    color: #ffffff; }
   table tr.even, table tr.alt, table tr:nth-of-type(even) {
-    background: #efe0ce; }
+    background: #ED2939; }
   table thead tr th,
   table tfoot tr th,
   table tbody tr td,
@@ -4295,7 +4295,7 @@ form .row textarea.columns {
 /* Label Styles */
 label {
   font-size: 0.875rem;
-  color: #4d4d4d;
+  color: #ffffff;
   cursor: pointer;
   display: block;
   font-weight: normal;

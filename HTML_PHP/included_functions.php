@@ -8,7 +8,7 @@ function db_connection(){
   if($mysqli -> connect_errno){
     die("Could not connect to server!");
   } else {
-  echo "Successful connection to ".DBNAME."<hr />";
+  // echo "Successful connection to ".DBNAME."<hr />";
   }
   return $mysqli;
 }
@@ -52,8 +52,8 @@ function db_connection(){
 	function new_header($name="Default", $urlLink="") {
 		echo "<head>";
 		echo "	<title>$name</title>";
-		echo "	<link rel='stylesheet' href='styles/normalize.css'>";
-		echo "	<link rel='stylesheet' href='styles/foundation.css'>";
+		echo "	<link rel='stylesheet' href='rename/normalize.css'>";
+		echo "	<link rel='stylesheet' href='rename/foundation.css'>";
 
 		echo "	<script src='js/vendor/modernizr.js'></script>";
 		echo "</head>";

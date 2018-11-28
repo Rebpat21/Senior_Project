@@ -91,7 +91,7 @@
 			echo "<tr>";
 			echo "<td>".$row["FName"]." ".$row["LName"]."</td>";
 			echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href='deleteLogin.php?id=".$row["id"]."'>Delete</a></td>";
+				<a href='deletePeople.php?id=".$row["id"]."'>Delete</a></td>";
 				echo "</tr>";
 			}
 			echo "</table><hr /><br /><br />";

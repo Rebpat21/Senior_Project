@@ -16,9 +16,9 @@
 
 		// Execute query
 		$result = $mysqli->query($query);
-		
+
 		if ($result && $mysqli->affected_rows === 1) {
-			$_SESSION["message"] = "Person successfully deleted!";
+			$_SESSION["message"] = "User successfully deleted!";
 			$output = message();
 			echo $output;
 			echo "<br /><br /><p>&laquo:<a href='readPeople.php'>Back to Main Page</a>";

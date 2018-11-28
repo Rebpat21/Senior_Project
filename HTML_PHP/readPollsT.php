@@ -40,8 +40,8 @@ $result = $mysqli -> query($query);
 
 	}
 ?>
-
-<br /><br /><a href='addPoll.php'>Create a New Poll</a> | <a href='logout.php'>Logout</a>;
-
+<center>
+	<br /><br /><a href='addPoll.php'>Create a New Poll</a> | <a href='logout.php'>Logout</a>;
+</center>
 
 <?php  new_footer("You-Vote", $mysqli); ?>
