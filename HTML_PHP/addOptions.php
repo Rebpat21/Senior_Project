@@ -8,12 +8,14 @@ require_once("included_functions.php");
 <?php
 
 $mysqli = db_connection();
+$ID = $_GET["id"];
+
 if (($output = message()) !== null) {
   echo $output;
+
 }
 if (isset($_POST["submit"])) {
   if( (isset($_POST["Name"]) && $_POST["Name"] !== "") ) {
-    $ID = $_GET["id"];
 
     $query = "INSERT INTO YV_Poll_Options (poll_id, Name, Created, Changed, Status) ";
     $query .= "VALUES (";
