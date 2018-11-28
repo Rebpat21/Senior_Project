@@ -29,11 +29,14 @@ if(isset($_POST['voteSubmit'])){
 
     if($voteSubmit){
 
+      // voted($ID, $_POST['pollID']);
+
       // $query = "INSERT INTO hasVoted (idPoll, idU) ";
       // $query .= "VALUES ('".$_POST['pollID']."', '".$_SESSION["admin_id"]."')";
       // $result = $mysqli->query($query);
+      $ID = $_GET["id"];
 
-      header("Location: readPollsStud.php");
+      header("Location: voted.php?id=".$ID."&pollID=".$_POST['pollID']);
   		exit;
 
         // setcookie($_POST['pollID'], 1, time()+60*60*24*365);

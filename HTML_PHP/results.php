@@ -24,8 +24,9 @@ if(!empty($pollResult['options'])){ $i=0;
     //Generate option bars with votes count
     foreach($pollResult['options'] as $opt=>$vote){
         //Calculate vote percent
-        $votePercent = round(($vote/$pollResult['total_votes'])*100);
-        $votePercent = !empty($votePercent)?$votePercent.'%':'0%';
+        $votePercent = round($vote/$pollResult['total_votes']);
+        // $votePercent = round(($vote/$pollResult['total_votes'])*100);
+        // $votePercent = !empty($votePercent)?$votePercent.'%':'0%';
         //Define bar color class
         if(!array_key_exists($i, $barColorArr)){
             $i=0;

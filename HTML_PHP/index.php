@@ -54,10 +54,11 @@
 
 
 ?>
-
+<center>
+<img src='images/sbaEaglesIndex.jpg' width="350" height="400"/>
+</center>
 		<div class='row'>
 		<label for='left-label' class='left inline'>
-
 		<h3>Welcome!</h3>
 
 			<form action="index.php" method="post">

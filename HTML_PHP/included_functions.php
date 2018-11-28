@@ -88,4 +88,9 @@ function db_connection(){
 
 	}
 
+  // function voted($ID, $PollID, $mysqli){
+  //   $query = "INSERT INTO hasVoted (idPoll, idU) VALUES ('".$ID."', '".$PollID."')";
+  //   $result = $mysqli ->query($query);
+  // }
+
 ?>
